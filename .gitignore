@@ -1,0 +1,6 @@
+.DS_Store
+/screenshots
+/audios
+/videos
+twitch.db
+run_log.csv

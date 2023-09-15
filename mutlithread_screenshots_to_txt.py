@@ -14,7 +14,7 @@ def get_txt(ss_path):
             f.write(text)
             print(f"written screenshots/{ss_path}/{png}_text.txt")
 
-def thread_get_txt(ss_folders, max_threads=1000):
+def thread_get_txt(ss_folders, max_threads=10):
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = [executor.submit(get_txt, fol) for fol in ss_folders]
         concurrent.futures.wait(futures)

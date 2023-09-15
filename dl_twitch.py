@@ -260,7 +260,7 @@ def dl_videos(video_list, user_name, max_threads=15):
                 for v in video_list[i*max_threads:len(video_list)-1]:
                     manage_db.set_video_downloaded(conn, manage_db.get_table_name(user_name), v, {'downloaded_yet': 1})
 
-def thread_get_streamer(streamer_list, max_threads=10):
+def thread_get_streamer(streamer_list, max_threads=20):
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = [executor.submit(get_streamer_videos, streamer) for streamer in streamer_list]
         concurrent.futures.wait(futures)
@@ -317,7 +317,7 @@ def get_profile_picture(streamer):
             print(e)
             print(f"could not save screenshot for {streamer} on {get_timestamp()}")
 
-def thread_profile_picture(streamer_list, max_threads=10):
+def thread_profile_picture(streamer_list, max_threads=50):
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = [executor.submit(get_profile_picture, streamer) for streamer in streamer_list]
         concurrent.futures.wait(futures)
@@ -350,7 +350,7 @@ if __name__ == "__main__":
     if args.pages:
         pages_to_dl = args.pages
     else:
-        pages_to_dl = 100
+        pages_to_dl = 500
     game_ids_list = []
     print("Games query:", games_query)
     if games_query:

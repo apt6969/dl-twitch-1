@@ -48,7 +48,7 @@ def full_page_screenshot(driver):
         offset += part.height
     return full_img
 
-def get_response(url, params, tries=3):
+def get_response(url, params, tries=float('inf')):
     headers = {
     'Authorization': auth,
     'Client-Id': client_id,

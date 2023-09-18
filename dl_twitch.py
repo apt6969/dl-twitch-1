@@ -48,7 +48,7 @@ def full_page_screenshot(driver):
         offset += part.height
     return full_img
 
-def get_response(url, params, tries=float('inf')):
+def get_response(url, params, tries=6969):
     headers = {
     'Authorization': auth,
     'Client-Id': client_id,
@@ -317,7 +317,7 @@ def get_profile_picture(streamer):
             print(e)
             print(f"could not save screenshot for {streamer} on {get_timestamp()}")
 
-def thread_profile_picture(streamer_list, max_threads=50):
+def thread_profile_picture(streamer_list, max_threads=100):
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = [executor.submit(get_profile_picture, streamer) for streamer in streamer_list]
         concurrent.futures.wait(futures)

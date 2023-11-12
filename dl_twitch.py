@@ -48,7 +48,7 @@ def full_page_screenshot(driver):
         offset += part.height
     return full_img
 
-def get_response(url, params, tries=6969):
+def get_response(url, params, tries=696969):
     headers = {
     'Authorization': auth,
     'Client-Id': client_id,
@@ -308,6 +308,7 @@ def get_profile_picture(streamer):
             # image.save(f"screenshots/{streamer}/{get_timestamp()}_{streamer}.png")
             print(f"saved screenshot for {streamer} on {get_timestamp()}")
             driver.get(f"https://twitch.tv/{streamer}/about")
+            os.system(f"mkdir screenshots/{streamer}/about > /dev/null 2>&1")
             time.sleep(random.uniform(5.5, 6.5))
             driver.save_screenshot(f"screenshots/{streamer}/about/{get_timestamp()}_{streamer}.png")
             print(f"saved screenshot for {streamer} about section on {get_timestamp()}")
